@@ -1,0 +1,106 @@
+{% extends 'info465/base.html' %}
+{% block content %}
+{% load bootstrap %}
+
+{% if messages %}
+<section class="jumbotron text-center">
+    <div class="container">
+{% for message in messages %}
+<h1 class="jumbotron-heading">The form was {{ message.tags }}fully submitted!</h1>
+  <p class="lead text-muted">You can review your submission below but you can't submit again!</p>
+</div>
+</section>
+{% endfor %}
+
+{% else %}
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Checkbox Deliverable</h1>
+      <p class="lead text-muted">Click "About" to see the notes from my professor. They don't relate since this is was built with no JavaScript or PHP. I was just too lazy to change them.</p>
+      <p>
+        <a href="https://info465.us/SeSDoC/SeSDoCFormAbout.php" target="_newtab">About</a>
+      </p>
+    </div>
+</section>
+{% endif %}
+
+  <div class="jumbotron">
+    <h4 class="mb-3">Name and Contact Data:</h4>
+  <form method="post" action="/checkbox/">
+    {% csrf_token %}
+    <!-- {{form|bootstrap_horizontal}} -->
+    <div class="Container">
+      <div class="col-md-6 mb-3">
+        <label for="firstName">First Name:</label>
+        {{ form.firstName }}
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="lastName">Last Name:</label>
+      {{ form.lastName }}
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="lastName">Last Name:</label>
+      {{ form.lastName }}
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="email">Email:</label>
+      {{ form.email }}
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="phone">Phone Number:</label>
+      {{ form.phone }}
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <h4 class="mb-3">Southeastern States:</h4>
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+          <label for="faveStateVisited">Select your favorite Southeastern State:</label>
+          {{ form.statesVisited }}
+        </div>
+        <div class="col-md">
+          <label for="statesVisited">Which southeastern states have you visited?</label>
+          {{ form.faveStateVisited }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <h4 class="mb-3">Opinions:</h4>
+    <div class="container">
+      <div class="text-center">
+        <label for="comment">What's your opinion on the Southeast?</label>
+        {{ form.comment }}
+      </div>
+      <hr class="mb-6">
+      <div class="row">
+        <div class="col-md">
+            {{ form.badweather.label_tag }}
+            {{ form.badweather }}
+        </div>
+        <div class="col-md">
+            {{ form.faveColor.label_tag }}
+            {{ form.faveColor }}
+        </div>
+        <div class="col-md">
+            {{ form.faveState.label_tag }}
+            {{ form.faveState }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ form.validate.label_tag }}
+  {{ form.validate }}
+  {% if messages %}
+  <a class="btn btn-primary btn-lg btn-block" href="{% url 'info465-test' %}" class="btn btn-primary my-2">Clear Form</a>
+  {% else %}
+  <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Form</button>
+  {% endif %}
+</form>
+</div>
+
+{% endblock %}

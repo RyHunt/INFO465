@@ -1,0 +1,8 @@
+{% extends 'info465/base.html' %}
+{% block content %}
+{% load bootstrap %}
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Success! </h1>
+      <a href="{% url 'info465-home' %}"class="btn btn-primary btn-lg btn-block" role="button">Return Home</a>
+{% endblock %}

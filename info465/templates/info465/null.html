@@ -1,0 +1,146 @@
+{% extends "info465/base.html" %}
+{% block content%}
+<main class="Row Card">
+
+  <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Checkbox Deliverable</h1>
+        <p class="lead text-muted">Click "About" to see the notes from my Professor. They don't relate since this is was built with no JavaScript or PHP. I was just too lazy to change them.</p>
+        <p>
+          <a href="#" class="btn btn-primary my-2">About</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="jumbotron text-center">
+
+      <h4 class="mb-3">Name and Contact Data:</h4>
+    <form method="post" novalidate>
+      {% crsf_token %}
+
+
+      <form class="needs-validation" novalidate="">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Last name:</label>
+            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+            <div class="invalid-feedback">
+              Valid last name is required.
+            </div>
+          </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="phone">Phone Number:</label>
+            <input type="text" class="form-control" id="phone" placeholder="" required="">
+            <div class="invalid-feedback">
+              Phone number required.
+            </div>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <h4 class="mb-3">Check the Southeastern states you've visited</h4>
+        <div class="container">
+          <div class="row">
+            {% for key in SoutheasternStates %}
+            <div class="col-md">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="{{ key }}">
+                <label class="custom-control-label" for="{{ key }}">{{ key }}</label>
+              </div>
+            </div>
+        {% endfor %}
+        </div>
+
+        <hr class="mb-6">
+        <h4 class="mb-3">Select your favorite Southeastern State</h4>
+        <div class="container">
+          <div class="row">
+            {% for key in FavoriteStateList %}
+            <div class="col-md">
+              <div class="custom-control custom-radio">
+                <input id="fave{{ key }}" name="fave" type="radio" class="custom-control-input" required="">
+                <label class="custom-control-label" for="fave{{ key }}">{{ key }}</label>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <hr class="mb-6">
+        <h4 class="mb-3">Opinions</h4>
+        <div class="row">
+          <div class="col-md">
+            <div class="form-group">
+              <label for="AreaOpinion">What's your opinion on the Southeast?</label>
+              <textarea class="form-control" id="AreaOpinion" rows="3" placeholder="Write something, we are desperate."></textarea>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+            <div class="form-group">
+              <div class="form-check">
+               <label for="BadWeather" class="col-sm control-label">What's your least favorite weather?</label>
+               <div class="col-sm-10">
+                   <select class="form-control" name="BadWeather" id="BadWeather">
+                     <option value="Heat">Heat</option>
+                     <option value="Humidity">Humidity</option>
+                     <option value="Thunder">Thunder</option>
+                     <option value="Rain">Rain</option>
+                     <option value="Snow">Snow</option>
+                   </select>
+                </div>
+              </div>
+             <div class="form-group">
+                <label for="FaveColor" class="col-sm control-label">Favorite Color of Southeastern Rainbows?</label>
+                <div class="col-sm-10">
+                    <select class="form-control inputstl" name="FaveColor" id="FaveColor">
+                      <option value="Red" style="background-color: red;">Red</option>
+                      <option value="Orange" style="background-color: orange;">Orange</option>
+                      <option value="Yellow" style="background-color: yellow;">Yellow</option>
+                      <option value="Green" style="background-color: green;">Green</option>
+                      <option value="Blue" style="color:white; background-color: blue;">Blue</option>
+                      <option value="indigo" style="color:white; background-color: indigo;">Indigo</option>
+                      <option value="violet" style="background-color: violet;">Violet</option>
+                    </select>
+                 </div>
+            </div>
+
+            <div class="form-group">
+              <label for="FaveAllStates" class="col-sm control-label">Favorite Other States?<br>
+                <span class="text-muted">(Ctrl-click for multiple)</span></label>
+                <select class"form-control" name="FaveAllStates[]" id="FaveAllStates" size="12" multiple="">
+                  {% for key2 in CompleteStateList %}
+                   <option value="{{ key2 }}">{{ key2 }}</option>
+                  {% endfor %}
+
+                </select>
+            </div>
+            </div>
+          </div>
+
+        <hr class="mb-6">
+
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Submit Form</button>
+    </form>
+    </div>
+  </div>
+<!--Template tail continues -->
+</main>
+
+{% endblock content %}

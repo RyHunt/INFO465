@@ -1,0 +1,65 @@
+{% extends "info465/base.html" %}
+{% block content%}
+
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Egg-sotic Pets</h1>
+      <p class="lead text-muted">Buy pets that are in eggs.</p>
+      <p>
+        <a href="{% url 'info465-test' %}" class="btn btn-primary my-2">Checkbox page</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <h2 class="center"> Featured Products: </h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            {% load static %}
+            <img src="{% static "info465/Gecko.png" %}" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Pet1</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+            <div class="card-body">
+              <p class="card-text">Gecko</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Buy</button>
+                </div>
+                <small class="text-muted">In stock</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            {% load static %}
+            <img src="{% static "info465/Emu.png" %}" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Pet2</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+            <div class="card-body">
+              <p class="card-text">Emu</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Buy</button>
+                </div>
+                <small class="text-muted">In stock</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            {% load static %}
+            <img src="{% static "info465/Platypus.png" %}" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Pet1</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+            <div class="card-body">
+              <p class="card-text">Platypus</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Buy</button>
+                </div>
+                <small class="text-muted">In stock</small>
+              </div>
+            </div>
+          </div>
+        </div>
+</main>
+{% endblock content %}
