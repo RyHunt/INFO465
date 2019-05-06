@@ -3,10 +3,25 @@ from django.http import HttpResponse
 from .forms import CheckBoxForm
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 # Create your views here.
 def home(request):
     return render(request, 'info465/home.html')
+
+@login_required
+def members(request):
+    return render(request, 'info465/members.html')
+
+
 
 def checkbox(request):
     if request.method == "POST":
